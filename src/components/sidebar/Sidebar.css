@@ -1,0 +1,48 @@
+.sidebar {
+    grid-column: 1/2;
+    background: black;
+    height: 100vh;
+    padding: .5em;
+}
+
+.sidebar__logo {
+    margin: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    user-select: none;
+}
+
+.sidebar__logo>img {
+    height: 50px;
+}
+
+.sidebar__logo>h1 {
+    padding-left: 4px;
+    font-size: 1.7em;
+    font-family: 'Circular-bold';
+    letter-spacing: -1px;
+}
+
+.sidebar__options {
+    color: white;
+}
+
+.sidebar__options>.option.active {
+    background: #282828;
+    color: white;
+}
+
+.sidebar__options>.option {
+    padding: .6em 24px;
+    border-radius: 5px;
+    color: #626262;
+    cursor: pointer;
+    transition: background .25s ease,
+        color .25s ease;
+}
+
+.sidebar__options>.option:hover {
+    color: white;
+}

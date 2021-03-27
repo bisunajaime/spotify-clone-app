@@ -1,0 +1,142 @@
+.glass {
+    background: rgba(27, 27, 27, 0.25);
+    backdrop-filter: blur(32.0px);
+    -webkit-backdrop-filter: blur(32.0px);
+}
+
+.playlistbody {
+    height: 100%;
+    /* padding: 0px 32px 0 32px; */
+    color: white;
+}
+
+.playlistbody>hr {
+    border-top: .5px solid rgba(255, 255, 255, 0.158);
+    opacity: .3;
+    margin: 0 28px;
+}
+
+.playlistbody__header {
+    display: grid;
+    grid-template-columns: minmax(8px, 16px) 16px minmax(100px, 1.5fr) 1fr 1fr 1fr;
+    grid-gap: 24px;
+    font-size: 12px;
+    padding: 1em 48px;
+    font-family: 'Circular-Book';
+    color: rgba(255,
+            255,
+            255,
+            0.692);
+}
+
+.playlistbody__header>.id {
+    grid-column: 1/2;
+}
+
+.playlistbody__header>.title {
+    grid-column: 3/4;
+}
+
+.playlistbody__header>.album {
+    grid-column: 4/5;
+}
+
+.playlistbody__header>.duration {
+    grid-column: 5/6;
+}
+
+.playlistbody__header>.releasedate {
+    grid-column: 6/7;
+}
+
+.playlistbody__songs {
+    /* padding: 1em; */
+    padding-top: 1em;
+}
+
+.playlistbody__songs>.song {
+    display: grid;
+    grid-gap: 24px;
+    grid-template-columns: minmax(8px, 16px) 16px minmax(100px, 1.5fr) 1fr 1fr 1fr;
+    transition: background-color .15s ease;
+    cursor: pointer;
+}
+
+.playlistbody__songs>.song:hover {
+    background-color: rgba(59, 59, 59, 0.37);
+}
+
+.song {
+    padding: 1em 48px;
+}
+
+.song>.id {
+    grid-column: 1/2;
+    display: flex;
+    align-items: center;
+}
+
+.song>.info>.important {
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.song>.info>.important>.title {
+    font-size: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.song>.info>.important>.author {
+    font-family: 'Circular-Book';
+    font-size: 14px;
+    opacity: .4;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.song>.info {
+    display: flex;
+    grid-column: 3/4;
+    align-items: center;
+}
+
+.song>.info>.image>img {
+    height: 40px;
+}
+
+.song>.album {
+    font-family: 'Circular-Book';
+    opacity: .5;
+    display: flex;
+    align-items: center;
+    grid-column: 4/5;
+    transition: opacity .25s ease;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.song>.album:hover {
+    opacity: 1;
+}
+
+.song>.duration {
+    font-family: 'Circular-Book';
+    opacity: .5;
+    display: flex;
+    align-items: center;
+    grid-column: 5/6;
+}
+
+.song>.releasedate {
+    grid-column: 6/7;
+    font-family: 'Circular-Book';
+    opacity: .5;
+}

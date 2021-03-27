@@ -1,0 +1,27 @@
+.recentlyplayed {
+    width: 100%;
+    color: white;
+    margin-bottom: 24px;
+    height: auto;
+    padding: 24px 32px;
+}
+
+.recentlyplayed>h1 {
+    font-size: 1.5em;
+    font-family: 'Circular-Book';
+    padding-bottom: 1em;
+}
+
+.recentlyplayed__songs {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-gap: 18px;
+}
+
+
+@media (max-width: 1024px) {
+    .recentlyplayed__songs {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}

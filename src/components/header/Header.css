@@ -1,0 +1,92 @@
+.header {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    color: white;
+    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: rgb(255, 132, 132); */
+}
+
+.header__navigation {
+    display: flex;
+
+}
+
+.header__navigation>.arrow_back {
+    margin-right: 16px;
+    /* background-color: rgb(255, 70, 70); */
+}
+
+.header__navigation>.arrow_forward {
+    /* background-color: rgb(149, 255, 211); */
+}
+
+.header__navigation>.arrow_back,
+.header__navigation>.arrow_forward {
+    cursor: pointer;
+    height: 35px;
+    width: 35px;
+    background: black;
+    border-radius: 1000px;
+    border: 1px solid rgba(255, 255, 255, 0.507);
+    transition: border .25s ease;
+}
+
+
+.header__navigation>.arrow_back:hover,
+.header__navigation>.arrow_forward:hover {
+    border: 1px solid rgba(255, 255, 255, 0.774);
+}
+
+.header__account_info {
+    display: flex;
+    align-items: center;
+}
+
+.header__account_info>button {
+    padding: .8em 4em;
+    border-radius: 100px;
+    color: white;
+    background: black;
+    border: 1px solid white;
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+
+    .header__account_info>button {
+        display: none;
+    }
+
+
+    .header__navigation>.arrow_forward {
+        display: none;
+    }
+
+}
+
+.header__account_info>.user {
+    display: flex;
+    align-items: center;
+    background: black;
+    border-radius: 1000px;
+    margin-left: 2em;
+}
+
+.header__account_info>.user>span {
+    margin: 0 .5em;
+    font-size: .9em;
+    font-family: 'Circular-Black';
+}
+
+.header__account_info>.user>img {
+    height: 30px;
+    border-radius: 100px;
+}
+
+.header__account_info>.user>.arrow_down>svg {
+    margin-right: 8px;
+}

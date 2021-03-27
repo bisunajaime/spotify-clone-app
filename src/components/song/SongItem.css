@@ -1,0 +1,49 @@
+.songitem {
+    width: 100%;
+    cursor: pointer;
+    padding: 16px;
+    background-color: #181818;
+    border-radius: 5px;
+    transition: background-color .15s ease;
+}
+
+.songitem:hover {
+    background-color: #363636;
+}
+
+@media (max-width: 1024px) {
+    .songitem__image {
+        height: 200px !important;
+    }
+}
+
+.songitem__image {
+    height: 160px;
+    width: 100%;
+}
+
+.songitem__image>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 0px 3px 10px rgba(26, 26, 26, 0.432),
+        0px 6px 20px rgba(26, 26, 26, 0.712);
+    /* height: 200px; */
+}
+
+.songitem__details>h4 {
+    font-family: 'Circular-Book';
+    padding-top: 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.songitem__details>span {
+    font-family: 'Circular-Book';
+    font-size: 14px;
+    color: rgba(255,
+            255,
+            255,
+            0.541);
+}

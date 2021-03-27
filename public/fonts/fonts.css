@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Circular-Med';
+    src: url(./circular-medium.otf);
+}
+
+@font-face {
+    font-family: 'Circular-Bold';
+    src: url(./circular-bold.otf);
+}
+
+@font-face {
+    font-family: 'Circular-Black';
+    src: url(./circular-black.otf);
+}
+
+@font-face {
+    font-family: 'Circular-Book';
+    src: url(./circular-book.otf);
+}
+
+* {
+    font-family: 'Circular-Med';
+}
