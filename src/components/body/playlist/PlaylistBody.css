@@ -139,4 +139,6 @@
     grid-column: 6/7;
     font-family: 'Circular-Book';
     opacity: .5;
+    display: flex;
+    align-items: center;
 }

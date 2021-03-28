@@ -17,9 +17,12 @@ function SongItem({ id, title, artist, cover, details }) {
 
         spotifyApi.getPlaylistTracks(id)
             .then(e => {
+                console.log("Items");
+                console.log(e.items);
+
                 dispatch({
                     type: SET_CURRENT_PLAYLIST_SONGS,
-                    payload: e.items
+                    payload: e.items.filter(song => song.track.preview_url !== null)
                 })
 
 

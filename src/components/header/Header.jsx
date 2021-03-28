@@ -2,6 +2,8 @@ import React from 'react'
 import { CLEAR_PLAYLIST } from '../../state/actions'
 import { useStateValue } from '../../state/AppDataLayer'
 import './Header.css'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 function Header() {
     const [{ accountDetails, playlist }, dispatch] = useStateValue()
@@ -16,9 +18,11 @@ function Header() {
         <section className="header">
             <div className="header__navigation">
                 <div className="arrow_back" onClick={playlist === null ? null : clearPlaylist}>
-                    {/* <svg role="img" focusable="false" height="24" width="24" viewBox="0 0 24 24" ><polyline points="16 4 7 12 16 20" fill="none" stroke="#181818"></polyline></svg> */}
+                    <ArrowBackIcon htmlColor="white" />
                 </div>
-                <div className="arrow_forward"></div>
+                <div className="arrow_forward">
+                    <ArrowForwardIcon htmlColor="white" />
+                </div>
             </div>
             <div className="header__account_info">
                 <button>UPGRADE</button>

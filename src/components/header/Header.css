@@ -32,6 +32,9 @@
     border-radius: 1000px;
     border: 1px solid rgba(255, 255, 255, 0.507);
     transition: border .25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 

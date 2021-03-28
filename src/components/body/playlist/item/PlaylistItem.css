@@ -1,0 +1,12 @@
+.active_bg {
+    background-color: rgba(109, 163, 110, 0.24);
+}
+
+.active_bg:hover {
+    background-color: rgba(46, 100, 47, 0.452) !important;
+}
+
+.active {
+    opacity: 1 !important;
+    transition: opacity .25s ease;
+}
