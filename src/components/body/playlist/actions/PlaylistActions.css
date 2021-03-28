@@ -1,0 +1,8 @@
+.playlistactions {
+    padding: 24px;
+}
+
+.playlistactions__playbtn {
+    cursor: pointer;
+    display: inline-block;
+}

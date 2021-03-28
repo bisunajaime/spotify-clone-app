@@ -3,8 +3,8 @@ import { useStateValue } from '../../../state/AppDataLayer'
 import './PlaylistHead.css'
 
 function PlaylistHead() {
-    const [{ playlist }, dispatch] = useStateValue()
-    const { name, id, href, owner, tracks, type, images, primary_color, description } = playlist
+    const [{ playlist }] = useStateValue()
+    const { name, owner, type, images, primary_color, description } = playlist
     const { display_name, } = owner;
 
     return (

@@ -1,0 +1,6 @@
+.library {}
+
+.library>h1 {
+    font-size: 4em;
+    color: white;
+}

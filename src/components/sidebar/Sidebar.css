@@ -1,7 +1,7 @@
 .sidebar {
     grid-column: 1/2;
     background: black;
-    height: 100vh;
+    height: 90vh;
     padding: .5em;
 }
 
@@ -18,11 +18,22 @@
     height: 50px;
 }
 
-.sidebar__logo>h1 {
+.sidebar__logo>.title {
+    display: flex;
     padding-left: 4px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sidebar__logo>.title>h1 {
     font-size: 1.7em;
     font-family: 'Circular-bold';
     letter-spacing: -1px;
+}
+
+.sidebar__logo>.title>small {
+    font-size: .7em;
+    opacity: .8;
 }
 
 .sidebar__options {
@@ -46,3 +57,28 @@
 .sidebar__options>.option:hover {
     color: white;
 }
+
+.sidebar__currentsong {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+
+.sidebar__currentsong>img {
+    align-self: flex-end;
+    width: 100%;
+}
+
+.sidebar__options>.option>.tab {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sidebar__options>.option>.tab>.label {
+
+    margin-left: 8px;
+}
+
+.sidebar__options>.option>.tab>span.icon {}

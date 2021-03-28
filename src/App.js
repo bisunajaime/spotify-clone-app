@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import SpotifyWebApi from 'spotify-web-api-js';
 import AuthScreen from './components/auth/AuthScreen'
 import HomeScreen from './components/home/HomeScreen';

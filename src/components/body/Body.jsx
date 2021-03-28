@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { HOME_TAB, LIBRARY_TAB, SEARCH_TAB } from '../../constants'
 import { useStateValue } from '../../state/AppDataLayer'
 import LibraryTab from '../tabs/library/LibraryTab'

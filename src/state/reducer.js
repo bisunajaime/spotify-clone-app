@@ -1,4 +1,16 @@
-import { CLEAR_PLAYLIST, IS_LOADING, SET_ACCOUNT_DETAILS, SET_CURRENT_COLOR, SET_CURRENT_PLAYLIST_SONGS, SET_CURRENT_SONG, SET_CURRENT_TAB, SET_IS_PLAYING, SET_MY_RECENT_PLAYED, SET_PLAYING, SET_PLAYLIST, SET_PLAYLISTS, SET_USER } from "./actions";
+import {
+    CLEAR_PLAYLIST,
+    IS_LOADING,
+    SET_ACCOUNT_DETAILS,
+    SET_CURRENT_COLOR,
+    SET_CURRENT_PLAYLIST_SONGS,
+    SET_CURRENT_SONG,
+    SET_CURRENT_TAB,
+    SET_IS_PLAYING,
+    SET_MY_RECENT_PLAYED,
+    SET_PLAYLIST,
+    SET_USER
+} from "./actions";
 import { HOME_TAB, SEARCH_TAB, LIBRARY_TAB } from '../constants.js'
 
 export const initialState = {
@@ -32,11 +44,6 @@ export default (state, action) => {
             return {
                 ...state,
                 user: action.payload
-            }
-        case SET_PLAYING:
-            return {
-                ...state,
-                playing: action.payload
             }
         case SET_CURRENT_SONG:
             return {
