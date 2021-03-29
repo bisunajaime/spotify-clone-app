@@ -11,6 +11,10 @@
     background-color: #363636;
 }
 
+.songitem.selectedplaylist {
+    background-color: #1ed75f6c;
+}
+
 @media (max-width: 1024px) {
     .songitem__image {
         height: 200px !important;

@@ -4,10 +4,26 @@
 }
 
 .searchresult__playlist {
+    max-width: 90%;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.searchresult__playlist>.list {
     display: grid;
     grid-gap: 16px;
     margin-top: 1em !important;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    max-width: 90%;
-    margin: 0 auto;
+    width: 100%;
+}
+
+.searchresult__playlist>h1 {
+    display: inline-block;
+    border-bottom: 3px solid #1ed760;
+    font-size: 2em;
+    margin-top: 16px;
+    color: white;
+    font-family: 'Circular-Book';
+    /* margin: 0 auto; */
+    text-align: left;
 }

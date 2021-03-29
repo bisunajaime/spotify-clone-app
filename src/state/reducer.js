@@ -20,6 +20,7 @@ export const initialState = {
     playlist: null,
     playlists: [],
     top_artists: [],
+    currentPlaylistId: null,
     playing: false,
     currentSong: null,
     currentSongIndex: null,
@@ -101,7 +102,8 @@ export default (state, action) => {
         case SET_CURRENT_PLAYLIST_SONGS:
             return {
                 ...state,
-                currentPlaylistSongs: action.payload
+                currentPlaylistSongs: action.payload.songs,
+                currentPlaylistId: action.payload.id
             }
         case SET_CURRENT_COLOR:
             return {

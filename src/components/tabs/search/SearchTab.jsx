@@ -45,7 +45,11 @@ function SearchTab() {
     const renderResults = () => {
         if (searchResult === null) return ""
         if (searchResult.playlists !== null) {
-            return <SearchResult playlists={searchResult.playlists.items} />
+            return <SearchResult
+                playlists={searchResult.playlists.items}
+                artists={searchResult.artists.items}
+                albums={searchResult.albums.items}
+            />
         }
         return ""
     }
@@ -62,7 +66,7 @@ function SearchTab() {
                 <form className="search__form" onSubmit={onSearch}>
                     <input value={searchTerm} onChange={updateTxt} autoComplete="false" type="text" name="search" id="search" placeholder="Search songs, artists, playists..." />
                 </form>
-                <img src={logo} alt="" />
+                <img src={logo} alt="" onClick={onSearch} />
             </div>
             <div className="search__showresultslabel">
                 <small>Showing results for "{searchTerm}"</small>

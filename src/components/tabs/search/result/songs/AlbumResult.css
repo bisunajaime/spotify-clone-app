@@ -1,0 +1,64 @@
+.albumresult {
+    max-width: 90%;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.albumresult>h1 {
+    display: inline-block;
+    border-bottom: 3px solid #1ed760;
+    font-size: 2em;
+    margin: 16px 0;
+    color: white;
+    font-family: 'Circular-Book';
+    /* margin: 0 auto; */
+    text-align: left;
+}
+
+.albumresult__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-gap: 16px;
+}
+
+.albumitem {
+    cursor: pointer;
+    color: white;
+    padding: 16px;
+    background-color: #181818;
+    border-radius: 5px;
+    transition: background-color .15s ease;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+.albumitem:hover {
+    background-color: #363636;
+}
+
+.albumitem>.image img {
+
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 0px 3px 10px rgba(26, 26, 26, 0.432),
+        0px 6px 20px rgba(26, 26, 26, 0.712);
+}
+
+.albumitem>.label>h1 {
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.albumitem>.label>span {
+    font-family: 'Circular-Book';
+    font-size: 14px;
+    color: rgba(255,
+            255,
+            255,
+            0.541);
+}

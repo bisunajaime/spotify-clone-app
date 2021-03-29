@@ -10,7 +10,7 @@ import { SET_CURRENT_SONG, SET_IS_PLAYING } from '../../state/actions';
 
 function Footer() {
     const [{ currentSong, currentSongIndex, currentPlaylistSongs, playing }, dispatch] = useStateValue()
-    const [volume, setVolume] = useState(1)
+    const [volume, setVolume] = useState(.5)
 
     useEffect(() => {
     }, [])
@@ -23,7 +23,7 @@ function Footer() {
         </section>
     }
 
-    const playNextSong = () => {
+    const playNextSong = (inc) => {
         let len = currentPlaylistSongs.length - 1
         console.log(currentPlaylistSongs.length);
         if (currentSongIndex >= len) {
@@ -36,8 +36,8 @@ function Footer() {
             })
             return
         }
-        let next = currentSongIndex + 1
-        console.log("NEXT: ", currentPlaylistSongs[next]);
+        let next = currentSongIndex + inc
+        if (next <= -1) return
         dispatch({
             type: SET_CURRENT_SONG,
             payload: {
@@ -98,14 +98,15 @@ function Footer() {
                     src={currentSong.preview_url}
                     autoPlay
                     controls
-                    onEnded={playNextSong}
+                    onListen={e => console.log(e)}
+                    onEnded={() => playNextSong(1)}
                     onVolumeChanged={e => setVolume(e.target.volume)}
                     volume={volume}
                     id="player"
                 />
                 <div className="custom_player">
                     <div className="icons">
-                        <div className="prev">
+                        <div className="prev" onClick={() => playNextSong(-1)}>
                             <SkipPreviousIcon htmlColor='white' className="skipbutton" stye={{ height: 20, width: 20 }} />
                         </div>
                         <div className="play" onClick={controlMusicState} >
@@ -115,7 +116,7 @@ function Footer() {
                                     <PlayCircleFilledIcon htmlColor='white' style={{ height: 40, width: 40 }} />
                             }
                         </div>
-                        <div className="next">
+                        <div className="next" onClick={() => playNextSong(1)}>
                             <SkipNextIcon htmlColor='white' className="nextbutton" stye={{ height: 20, width: 20 }} />
                         </div>
                     </div>

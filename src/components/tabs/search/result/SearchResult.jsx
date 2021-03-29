@@ -1,35 +1,20 @@
 import React from 'react'
-import SongItem from '../../../song/SongItem'
+import { useStateValue } from '../../../../state/AppDataLayer'
+import PlaylistResult from './playlist/PlaylistResult'
 import './SearchResult.css'
+import AlbumResult from './songs/AlbumResult'
 
-function SearchResult({ playlists }) {
+function SearchResult({ playlists, albums, artists }) {
+    const [{ searchResult }, dispatch] = useStateValue()
     return (
         <div className="search__searchresult">
             {/* Playlists */}
             <PlaylistResult playlists={playlists} />
             {/* Songs */}
+            <AlbumResult albums={albums} />
             {/* Artists */}
         </div>
     )
-}
-
-const PlaylistResult = ({ playlists }) => {
-    return <section className="searchresult__playlist">
-
-        {playlists.map(e => {
-            let { id, name, owner, images, cover, details } = e
-            let artist = owner.display_name
-
-            return <SongItem
-                key={id}
-                id={id}
-                title={name}
-                artist={artist}
-                cover={images[0].url}
-                details={e}
-            />
-        })}
-    </section>
 }
 
 export default SearchResult

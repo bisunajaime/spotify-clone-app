@@ -7,7 +7,7 @@ import * as Vibrant from 'node-vibrant'
 
 function SongItem({ id, title, artist, cover, details }) {
 
-    const [{ user, currentPlaylistSongs }, dispatch] = useStateValue()
+    const [{ user, currentPlaylistSongs, currentPlaylistId }, dispatch] = useStateValue()
 
     const onPlaylistSelect = () => {
 
@@ -22,7 +22,10 @@ function SongItem({ id, title, artist, cover, details }) {
 
                 dispatch({
                     type: SET_CURRENT_PLAYLIST_SONGS,
-                    payload: e.items.filter(song => song.track.preview_url !== null)
+                    payload: {
+                        songs: e.items.filter(song => song.track.preview_url !== null),
+                        id: id
+                    }
                 })
 
 
@@ -57,7 +60,7 @@ function SongItem({ id, title, artist, cover, details }) {
     }
 
     return (
-        <div className="songitem" onClick={onPlaylistSelect}>
+        <div className={`songitem ${currentPlaylistId !== id ? '' : 'selectedplaylist'}`} onClick={onPlaylistSelect}>
             <div className="songitem__image">
                 <img src={cover} alt="image" />
             </div>
