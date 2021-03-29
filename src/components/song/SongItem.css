@@ -32,6 +32,7 @@
 }
 
 .songitem__details>h4 {
+    color: white;
     font-family: 'Circular-Book';
     padding-top: 8px;
     white-space: nowrap;

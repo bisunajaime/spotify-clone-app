@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import SpotifyWebApi from 'spotify-web-api-js'
-import { SET_CURRENT_COLOR, SET_CURRENT_PLAYLIST_SONGS, SET_PLAYLIST } from '../../state/actions'
+import { SET_CURRENT_COLOR, SET_CURRENT_PLAYLIST_SONGS, SET_CURRENT_SONG, SET_PLAYLIST } from '../../state/actions'
 import { useStateValue } from '../../state/AppDataLayer'
 import './SongItem.css'
 import * as Vibrant from 'node-vibrant'
 
 function SongItem({ id, title, artist, cover, details }) {
 
-    const [{ user }, dispatch] = useStateValue()
+    const [{ user, currentPlaylistSongs }, dispatch] = useStateValue()
 
     const onPlaylistSelect = () => {
 
@@ -36,12 +36,20 @@ function SongItem({ id, title, artist, cover, details }) {
                             type: SET_CURRENT_COLOR,
                             payload: hex
                         })
-                    }).catch(e => console.log(e))
+                    }).catch(err => console.log(err))
 
 
                 dispatch({
                     type: SET_PLAYLIST,
                     payload: details
+                })
+
+                dispatch({
+                    type: SET_CURRENT_SONG,
+                    payload: {
+                        currentSong: e.items[0].track,
+                        index: 0
+                    }
                 })
             })
 

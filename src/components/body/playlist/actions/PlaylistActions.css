@@ -1,8 +1,13 @@
 .playlistactions {
     padding: 24px;
+    display: flex;
+    align-items: center;
 }
 
 .playlistactions__playbtn {
     cursor: pointer;
-    display: inline-block;
+}
+
+#shuffle {
+    margin-left: 14px;
 }

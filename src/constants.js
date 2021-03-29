@@ -14,3 +14,4 @@ export const authorizeUrl = `https://accounts.spotify.com/authorize?client_id=${
 export const HOME_TAB = "Home";
 export const SEARCH_TAB = "Search";
 export const LIBRARY_TAB = "Library"
+export const CURRENT_PLAYLIST = "Current Playlist"

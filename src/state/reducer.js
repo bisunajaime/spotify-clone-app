@@ -9,9 +9,11 @@ import {
     SET_IS_PLAYING,
     SET_MY_RECENT_PLAYED,
     SET_PLAYLIST,
-    SET_USER
+    SET_USER,
+    SET_IS_AUTOPLAY,
+    SET_SEARCH_RESULT
 } from "./actions";
-import { HOME_TAB, SEARCH_TAB, LIBRARY_TAB } from '../constants.js'
+import { HOME_TAB, SEARCH_TAB, LIBRARY_TAB, CURRENT_PLAYLIST } from '../constants.js'
 
 export const initialState = {
     user: null,
@@ -20,6 +22,7 @@ export const initialState = {
     top_artists: [],
     playing: false,
     currentSong: null,
+    currentSongIndex: null,
     accountDetails: null,
     currentColor: "#212121",
     recentlyPlayed: [],
@@ -27,11 +30,15 @@ export const initialState = {
     playingPreview: false,
     currentPlaylistSongs: null,
     currentTab: HOME_TAB,
+    autoPlay: true,
+    searchTxt: "",
     tabs: [
         HOME_TAB,
         SEARCH_TAB,
-        LIBRARY_TAB
+        LIBRARY_TAB,
+        CURRENT_PLAYLIST
     ],
+    searchResult: null,
     isFetching: false
 }
 
@@ -46,9 +53,19 @@ export default (state, action) => {
                 user: action.payload
             }
         case SET_CURRENT_SONG:
+            let { id, duration_ms, album, name, popularity, artists, preview_url } = action.payload.currentSong
+            let { images, release_date } = album
+            let trackArtists = artists.map(res => res.name).join(", ")
             return {
                 ...state,
-                currentSong: action.payload
+                currentSong: {
+                    id,
+                    image: images[2].url,
+                    trackArtists,
+                    name,
+                    preview_url
+                },
+                currentSongIndex: action.payload.index
             }
         case SET_ACCOUNT_DETAILS:
             return {
@@ -95,6 +112,17 @@ export default (state, action) => {
             return {
                 ...state,
                 playing: action.payload
+            }
+        case SET_IS_AUTOPLAY:
+            return {
+                ...state,
+                autoPlay: action.payload
+            }
+        case SET_SEARCH_RESULT:
+            return {
+                ...state,
+                searchResult: action.payload.searchResult,
+                searchTxt: action.payload.searchTxt
             }
         default:
             return state;

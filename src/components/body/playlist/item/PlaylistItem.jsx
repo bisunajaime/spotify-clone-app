@@ -17,11 +17,8 @@ function PlaylistItem({ track, index }) {
             dispatch({
                 type: SET_CURRENT_SONG,
                 payload: {
-                    id,
-                    image: images[2].url,
-                    trackArtists,
-                    name,
-                    preview_url
+                    currentSong: track,
+                    index: index
                 }
             })
             dispatch({

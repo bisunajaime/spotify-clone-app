@@ -23,7 +23,11 @@
     padding: 0 0 0 2em;
 }
 
-.search__bar>#search {
+.search__form {
+    width: 100%;
+}
+
+#search {
     border: none;
     outline: none;
     padding: 1em 0;

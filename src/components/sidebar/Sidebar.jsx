@@ -5,11 +5,12 @@ import { useStateValue } from '../../state/AppDataLayer'
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import './Sidebar.css'
-import { HOME_TAB, LIBRARY_TAB, SEARCH_TAB } from '../../constants';
+import { CURRENT_PLAYLIST, HOME_TAB, LIBRARY_TAB, SEARCH_TAB } from '../../constants';
 
 function Sidebar() {
-    const [{ currentTab, tabs, playlist, currentSong }, dispatch] = useStateValue()
+    const [{ currentTab, tabs, playlist, currentSong, recentlyPlayed }, dispatch] = useStateValue()
 
     const updateTab = tab => {
 
@@ -33,7 +34,8 @@ function Sidebar() {
 
     const renderTabIcon = tab => {
         let opacity = .5
-        if (currentTab === tab) {
+        let currTab = currentTab.replace(" ", "").toLowerCase()
+        if (currTab === tab.replace(" ", "").toLowerCase()) {
             opacity = 1
         }
         switch (tab) {
@@ -43,9 +45,20 @@ function Sidebar() {
                 return <SearchIcon htmlColor="white" style={{ opacity }} />
             case LIBRARY_TAB:
                 return <BookmarkBorderIcon htmlColor="white" style={{ opacity }} />
+            case CURRENT_PLAYLIST:
+                return <MusicNoteIcon htmlColor="white" style={{ opacity }} />
             default:
                 return ''
         }
+    }
+
+    const showPlaylistTab = tab => {
+        if (tab === CURRENT_PLAYLIST) {
+            if (playlist === null) {
+                return 'hide'
+            }
+        }
+        return ''
     }
 
     return (
@@ -58,12 +71,14 @@ function Sidebar() {
                 </div>
             </div>
             <div className="sidebar__options">
-                {tabs.map(tab => (<div key={tab.toLowerCase()} onClick={() => updateTab(tab)} className={`option ${currentTab.toLowerCase() === tab.toLowerCase() ? 'active' : ''}`}>
-                    <div className="tab">
-                        <span className="icon">{renderTabIcon(tab)}</span>
-                        <span className="label">{tab}</span>
-                    </div>
-                </div>))}
+                {tabs.map(tab => {
+                    return (<div key={tab.toLowerCase()} onClick={() => updateTab(tab)} className={`option ${currentTab.toLowerCase() === tab.toLowerCase() ? 'active' : ''} ${showPlaylistTab(tab)}`}>
+                        <div className={`tab`}>
+                            <span className="icon">{renderTabIcon(tab)}</span>
+                            <span className="label">{tab}</span>
+                        </div>
+                    </div>)
+                })}
             </div>
             {/* <div className={`sidebar__currentsong ${showCurrentSong()}`}>
                 <img src={currentSong === null ? '' : currentSong.image} alt="" />

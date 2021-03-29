@@ -2,15 +2,52 @@ import React, { useState } from 'react'
 import './SearchTab.css'
 import SearchIcon from '@material-ui/icons/Search';
 import { logo } from '../../../asset_links';
+import SpotifyWebApi from 'spotify-web-api-js';
+import { useStateValue } from '../../../state/AppDataLayer';
+import SearchResult from './result/SearchResult';
+import { SET_SEARCH_RESULT } from '../../../state/actions';
 
 function SearchTab() {
-    const [searchTxt, setSearchTxt] = useState("")
+    const [{ user, searchResult, searchTxt }, dispatch] = useStateValue()
+    const [searchTerm, setSearchTerm] = useState("")
+    const [isSearching, setIsSearching] = useState(false)
 
     const updateTxt = (e) => {
-        setSearchTxt(e.target.value)
-        console.log(searchTxt);
-        // add searchTerm in state
-        // onSearchevent dispatch and update state
+        setSearchTerm(e.target.value)
+    }
+
+    const onSearch = (e) => {
+        e.preventDefault()
+        if (searchTerm === null || searchTerm === "") {
+            alert('Please enter search text')
+            return
+        }
+        let spotifyApi = new SpotifyWebApi();
+        spotifyApi.setAccessToken(user)
+        setIsSearching(true)
+        spotifyApi.search(searchTerm, ['album', 'artist', 'playlist'])
+            .then(result => {
+                console.log(result);
+                dispatch({
+                    type: SET_SEARCH_RESULT,
+                    payload: {
+                        searchResult: result,
+                        searchTxt: searchTerm
+                    }
+                })
+                setIsSearching(false)
+            }).catch(err => {
+                setIsSearching(false)
+                alert('There was a problem, Please try again')
+            })
+    }
+
+    const renderResults = () => {
+        if (searchResult === null) return ""
+        if (searchResult.playlists !== null) {
+            return <SearchResult playlists={searchResult.playlists.items} />
+        }
+        return ""
     }
 
     return (
@@ -22,12 +59,15 @@ function SearchTab() {
                 <div className="icon">
                     <SearchIcon htmlColor="black" fontSize="large" />
                 </div>
-                <input value={searchTxt} onChange={updateTxt} autoComplete={false} type="text" name="search" id="search" placeholder="Search songs, artists, playists..." />
+                <form className="search__form" onSubmit={onSearch}>
+                    <input value={searchTerm} onChange={updateTxt} autoComplete="false" type="text" name="search" id="search" placeholder="Search songs, artists, playists..." />
+                </form>
                 <img src={logo} alt="" />
             </div>
             <div className="search__showresultslabel">
-                <small>Showing results for "{searchTxt}"</small>
+                <small>Showing results for "{searchTerm}"</small>
             </div>
+            {renderResults()}
         </div>
     )
 }

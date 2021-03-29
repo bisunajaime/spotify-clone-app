@@ -82,3 +82,7 @@
 }
 
 .sidebar__options>.option>.tab>span.icon {}
+
+.sidebar__options>.option>.tab.hide {
+    display: none;
+}

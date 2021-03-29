@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import { useStateValue } from '../../state/AppDataLayer'
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
@@ -6,11 +6,14 @@ import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import './Footer.css'
-import { SET_IS_PLAYING } from '../../state/actions';
+import { SET_CURRENT_SONG, SET_IS_PLAYING } from '../../state/actions';
 
 function Footer() {
-    const [{ currentSong, playing }, dispatch] = useStateValue()
+    const [{ currentSong, currentSongIndex, currentPlaylistSongs, playing }, dispatch] = useStateValue()
     const [volume, setVolume] = useState(1)
+
+    useEffect(() => {
+    }, [])
 
     if (currentSong === null) {
         return <section className="footer">
@@ -18,6 +21,30 @@ function Footer() {
                 {/* <img src="" alt=""/> */}
             </div>
         </section>
+    }
+
+    const playNextSong = () => {
+        let len = currentPlaylistSongs.length - 1
+        console.log(currentPlaylistSongs.length);
+        if (currentSongIndex >= len) {
+            dispatch({
+                type: SET_CURRENT_SONG,
+                payload: {
+                    currentSong: currentPlaylistSongs[0].track,
+                    index: 0
+                }
+            })
+            return
+        }
+        let next = currentSongIndex + 1
+        console.log("NEXT: ", currentPlaylistSongs[next]);
+        dispatch({
+            type: SET_CURRENT_SONG,
+            payload: {
+                currentSong: currentPlaylistSongs[next].track,
+                index: next
+            }
+        })
     }
 
     const controlMusicState = () => {
@@ -39,7 +66,6 @@ function Footer() {
 
     const renderVolumeColor = () => {
         let vol = volume * 100
-        console.log(vol);
         if (vol === 0) {
             return 'mute'
         } else if (vol > 0 && vol < 25) {
@@ -72,7 +98,7 @@ function Footer() {
                     src={currentSong.preview_url}
                     autoPlay
                     controls
-                    loop
+                    onEnded={playNextSong}
                     onVolumeChanged={e => setVolume(e.target.volume)}
                     volume={volume}
                     id="player"
