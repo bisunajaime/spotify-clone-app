@@ -36,7 +36,7 @@ export const initialState = {
     tabs: [
         HOME_TAB,
         SEARCH_TAB,
-        LIBRARY_TAB,
+        // LIBRARY_TAB,
         CURRENT_PLAYLIST
     ],
     searchResult: null,

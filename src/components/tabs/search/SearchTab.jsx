@@ -69,7 +69,7 @@ function SearchTab() {
                 <img src={logo} alt="" onClick={onSearch} />
             </div>
             <div className="search__showresultslabel">
-                <small>Showing results for "{searchTerm}"</small>
+                {searchTerm.length == 0 ? <></> : <small>Showing results for "{searchTerm}"</small>}
             </div>
             {renderResults()}
         </div>
